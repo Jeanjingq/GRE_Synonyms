@@ -32,6 +32,11 @@ class SynonymGameUI:
         
         self.accuracy_label = tk.Label(info_frame, text="正确率: 0%", font=("Arial", 23))
         self.accuracy_label.pack(side=tk.LEFT, padx=20)
+                
+        # 加载文件提示标签
+        load_hint_label = tk.Label(info_frame, text="点击此处加载单词本：", 
+                                   font=("Arial", 12))
+        load_hint_label.pack(side=tk.LEFT, padx=(20, 0))
         
         # 加载文件按钮
         load_btn = tk.Button(info_frame, text="加载Excel文件", command=self.load_file, 
@@ -70,7 +75,7 @@ class SynonymGameUI:
         
         # 提示信息（增大字体）
         self.message_label = tk.Label(self.root, text="请先加载Excel文件", 
-                                     font=("Arial", 25, "bold"), fg="blue")
+                                     font=("Arial", 25, "bold"), fg="white")
         self.message_label.pack(pady=20)
     
     def load_file(self):
@@ -136,7 +141,7 @@ class SynonymGameUI:
                 self.left_buttons[self.selected_left].config(bg="SystemButtonFace")
         
         self.selected_left = index
-        self.left_buttons[index].config(bg="lightblue")
+        self.left_buttons[index].config(bg="darkgray")
         
         # 如果两边都选了，检查配对
         if self.selected_right is not None:
@@ -149,7 +154,7 @@ class SynonymGameUI:
             self.right_buttons[self.selected_right].config(bg="SystemButtonFace")
         
         self.selected_right = index
-        self.right_buttons[index].config(bg="lightblue")
+        self.right_buttons[index].config(bg="darkgray")
         
         # 如果两边都选了，检查配对
         if self.selected_left is not None:
@@ -181,7 +186,7 @@ class SynonymGameUI:
             self.message_label.config(text="✗ 错误，请重试", fg="red")
             
             # 短暂延时后恢复
-            self.root.after(800, self.reset_selection)
+            self.root.after(500, self.reset_selection)
         
         self.update_score()
         
