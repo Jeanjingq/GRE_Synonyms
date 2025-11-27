@@ -13,3 +13,8 @@
 `pip install pandas openpyxl`
 3. 运行程序
 `python main.py`
+
+## log 问题记录
+
+### 按钮背景色
+Tkinter 的 Button 组件有内置的鼠标按下/释放行为，会自动切换颜色状态，因此暂不能够实现标记哪一个单词按下了的功能。
